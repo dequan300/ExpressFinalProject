@@ -22,7 +22,7 @@ pool.query(sql,param).then(result=>{
         res.json(result.rows[0])
     }else{
         res.status(404)
-        res.send("no cart items")
+        res.send("no player")
     }
 })
 });
@@ -44,7 +44,7 @@ playerRoutes.post("/player-info",(req,res)=>{
     
 
 });
-playerRoutes.put("player_data/:id", (req, res) => {
+playerRoutes.put("player-info/:id", (req, res) => {
     const id = parseInt(req.params.id);
     const player= req.body;
     player.id = id;
