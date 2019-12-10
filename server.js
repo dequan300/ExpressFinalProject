@@ -12,5 +12,5 @@ const DEFAULT_PORT=3000
 const port = process.env.PORT || DEFAULT_PORT
 
 app.listen(port,()=>{
-    console.log(`server works https://localhost:${port}`)
+    console.log(`server works http://localhost:${port}`)
 });
