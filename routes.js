@@ -33,7 +33,7 @@ playerRoutes.post("/player-info",(req,res)=>{
     const info=req.body;
     info.id =nextId
     nextId++
-    let sql= `insert into player_data (name,popularity,charisma,academic)
+    let sql= `insert into player_data (name,popular,unpopular,nice,jock,bully,nerd,personality)
     values ($1::text,$2::int,$3::int,$4::int,5::int,6::int,7::int,8::text) RETURNING *`;
     let param= [info.name,info.popular,info.unpopular,info.nice,info.jock,info.bully,info.nerd,info.personality]
     pool.query(sql,param).then(result=>{
