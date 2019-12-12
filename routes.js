@@ -16,7 +16,7 @@ res.status(200)
 playerRoutes.get("/player-info/:id",(req,res)=>{
 let param =[id]
 const id = parseInt(req.param.id)
-let sql = "select*from player_data where id=$1::int"
+let sql = "SELECT * FROM player_data order by id desc where id=$1::int"  //SELECT * FROM public.player_data order by id desc
 pool.query(sql,param).then(result=>{
     if(result.rows.lenght!==0){
         res.json(result.rows[0])
