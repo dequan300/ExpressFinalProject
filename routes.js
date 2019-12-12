@@ -5,7 +5,7 @@ const pool= require("./connection");
 let nextId=3
 
 playerRoutes.get("/player-info",(req,res)=>{
-let sql ="select *from player_data"
+let sql ="SELECT * FROM player_data order by id desc"
 pool.query(sql).then(result=>{
     // console.log(result.rows)
 res.json(result.rows)
@@ -13,19 +13,19 @@ res.status(200)
 });
 });
 
-playerRoutes.get("/player-info/:id",(req,res)=>{
-let param =[id]
-const id = parseInt(req.param.id)
-let sql = "SELECT * FROM player_data order by id desc where id=$1::int"  //SELECT * FROM public.player_data order by id desc
-pool.query(sql,param).then(result=>{
-    if(result.rows.lenght!==0){
-        res.json(result.rows[0])
-    }else{
-        res.status(404)
-        res.send("no player")
-    }
-})
-});
+// playerRoutes.get("/player-info/:id",(req,res)=>{
+// let param =[id]
+// const id = parseInt(req.param.id)
+// let sql = "SELECT * FROM player_data order by id desc where id=$1::int"  //SELECT * FROM public.player_data order by id desc
+// pool.query(sql,param).then(result=>{
+//     if(result.rows.lenght!==0){
+//         res.json(result.rows[0])
+//     }else{
+//         res.status(404)
+//         res.send("no player")
+//     }
+// })
+// });
 
 
 
